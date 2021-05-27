@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SAT.DATA.EF.Student>
+
+@{
+    ViewBag.Title = "Students";
+}
+<br /><br />
+<br /><br />
+<h2>StudentGridView</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<h2 class="gallery-title">
+    @ViewBag.Title
+
+</h2>
+<a href="@Url.Action("Index","Students")" class="btn btn-primary">Table View</a>
+<div class="grid-bg">
+    <div id="productGrid" class="row">
+     
+        @foreach (var item in Model)
+        {
+
+            <div class="card col-md-3" style="width: 18rem;">
+                <div class="other-border">
+                    <a href="@Url.Action("Details","Products", new { id=item.StudentId})"> <img src="~/Content/imgStore/@item.PhotoUrl" alt="Product Image" title="@item.FirstName" style="height:300px; width:100%" /></a>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.FirstName @item.LastName</h5>
+                        <hr />
+                        <p class="card-text">@item.Major</p>
+                        <p class="card-info">@item.Email </p>
+                        <p class="card-info">@item.Phone</p>
+
+                   
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
